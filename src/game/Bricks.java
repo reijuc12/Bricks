@@ -53,7 +53,7 @@ public class Bricks extends Application {
             @Override
             public void handle(ActionEvent event) {
                 Duration thisRun = brickAnimation.getCurrentTime();
-                double tslf = thisRun.toSeconds()-lastRun.toSeconds()+0.02;
+                double tslf = thisRun.toSeconds() - lastRun.toSeconds() + 0.02;
                 lastRun = thisRun;
 
                 player.update(tslf);
@@ -80,7 +80,7 @@ public class Bricks extends Application {
             if (ball.getBall().intersects(bottomWall.getBoundsInLocal()) && ball.getDeltaY() >= 0) {
                 ball.setDeltaY(-ball.getDeltaY());
             }
-            
+
             for (Brick b : bricks) {
                 if (b.getBrick().intersects(ball.getBall().getBoundsInLocal())) {
                     if (b.getBrick().getX() - ball.getBall().getCenterX() + ball.getBall().getRadius() > 0) {
@@ -98,14 +98,14 @@ public class Bricks extends Application {
     private void prepareLevel(int level) {
         switch (level) {
             case 0: {
-                double padding = (800-62*10)/2.0;
-                
+                double padding = (800 - 62 * 10) / 2.0;
+
                 for (int i = 0; i < 10; i++) {
-                    Brick b = new Brick(1, 60, 20, padding+62*i, 50);
+                    Brick b = new Brick(1, 60, 20, padding + 62 * i, 50);
                     bricks.add(b);
                     canvas.getChildren().add(b.getBrick());
                 }
-                
+
                 break;
             }
             case 1: {
@@ -327,8 +327,6 @@ public class Bricks extends Application {
             }
         });
 
-        
-
         StackPane p = new StackPane();
         Button bt = new Button("Start!");
         bt.paddingProperty().set(new Insets(10, 70, 10, 70));
@@ -361,7 +359,7 @@ public class Bricks extends Application {
         p.backgroundProperty().set(new Background(new BackgroundFill(Color.LIGHTCYAN, CornerRadii.EMPTY, Insets.EMPTY)));
         p.getChildren().add(bt);
         Scene pauseMenu = new Scene(p, 800, 500);
-        
+
         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
