@@ -26,10 +26,16 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -327,7 +333,12 @@ public class Bricks extends Application {
             }
         });
 
-        StackPane p = new StackPane();
+        VBox vp = new VBox(7);
+        vp.alignmentProperty().set(Pos.CENTER);
+        Text t = new Text("Bricks");
+        t.setTextAlignment(TextAlignment.CENTER);
+        t.setFill(Color.CORAL);
+        t.setFont(Font.font("Helvetica", 128));
         Button bt = new Button("Start!");
         bt.paddingProperty().set(new Insets(10, 70, 10, 70));
         bt.alignmentProperty().set(Pos.CENTER);
@@ -339,10 +350,11 @@ public class Bricks extends Application {
                 primaryStage.setScene(scene);
             }
         });
-        p.getChildren().add(bt);
-        Scene startMenu = new Scene(p, 800, 500);
+        vp.getChildren().add(t);
+        vp.getChildren().add(bt);
+        Scene startMenu = new Scene(vp, 800, 500);
 
-        p = new StackPane();
+        StackPane sp = new StackPane();
         bt = new Button("Continue");
         bt.paddingProperty().set(new Insets(10, 70, 10, 70));
         bt.alignmentProperty().set(Pos.CENTER);
@@ -356,9 +368,9 @@ public class Bricks extends Application {
                 brickAnimation.play();
             }
         });
-        p.backgroundProperty().set(new Background(new BackgroundFill(Color.LIGHTCYAN, CornerRadii.EMPTY, Insets.EMPTY)));
-        p.getChildren().add(bt);
-        Scene pauseMenu = new Scene(p, 800, 500);
+        sp.backgroundProperty().set(new Background(new BackgroundFill(Color.LIGHTCYAN, CornerRadii.EMPTY, Insets.EMPTY)));
+        sp.getChildren().add(bt);
+        Scene pauseMenu = new Scene(sp, 800, 500);
 
         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
