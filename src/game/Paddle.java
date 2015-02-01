@@ -49,11 +49,11 @@ public class Paddle {
   
   public void update(double tslf) 
   {
-    if(right)
+    if(right && x.getValue()+paddle.getWidth()+deltaX*tslf < 800)
     {
       x.set(x.getValue()+deltaX*tslf);
     }
-    if(left)
+    if(left && x.get()-deltaX*tslf > 0)
     {
       x.set(x.getValue()-deltaX*tslf);
     }
